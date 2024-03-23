@@ -1,0 +1,284 @@
+main {
+    min-height: 200vh;
+}
+
+/*############ Core Styles ###########*/
+/* Vars */
+:root {
+    --brand-color--green-1: #05ef95;
+    --brand-color--green-2: #2cc380;
+    --neutral-color--1000: #0c0c0c;
+
+    --white-color--100: rgba(255,255,255,1);
+    --white-color--95: rgba(255,255,255,.95);
+    --white-color--90: rgba(255,255,255,.9);
+    --white-color--85: rgba(255,255,255,.85);
+    --white-color--80: rgba(255,255,255,.8);
+    --white-color--75: rgba(255,255,255,.75);
+    --white-color--70: rgba(255,255,255,.7);
+    --white-color--65: rgba(255,255,255,.65);
+    --white-color--60: rgba(255,255,255,.6);
+    --white-color--55: rgba(255,255,255,.55);
+    --white-color--50: rgba(255,255,255,.5);
+    --white-color--45: rgba(255,255,255,.45);
+    --white-color--40: rgba(255,255,255,.4);
+    --white-color--35: rgba(255,255,255,.35);
+    --white-color--30: rgba(255,255,255,.3);
+    --white-color--25: rgba(255,255,255,.25);
+    --white-color--20: rgba(255,255,255,.2);
+    --white-color--15: rgba(255,255,255,.15);
+    --white-color--10: rgba(255,255,255,.1);
+    --white-color--5: rgba(255,255,255,.05);
+    --white-color--0: rgba(255,255,255,0);
+
+    --padding--global: 4rem;
+
+    --container--large: 87.5rem; /* 1400px */
+    --container--medium: 75rem; /* 1200px */
+    --container--small: 62.5rem; /* 1000px */
+
+    --h1--font-size: 4.5rem;
+    --h2--font-size: 3rem;
+    --h3--font-size: 1.75rem;
+    --h4--font-size: 1.3125rem;
+    --h5--font-size: 1.125rem;
+    --h6--font-size: .9375rem;
+    --body--font-size: 1rem;
+
+    --text-color--primary: var(--white-color--100);
+    --text-color--secondary: var(--white-color--70);
+    --heading-color--main: var(--white-color--100);
+    --heading-color--subheading: var(--brand-color--green-1);
+}
+/* Tablet */
+@media screen and (max-width: 991px) {
+    :root {
+        --padding--global: 3rem;
+        --h1--font-size: 3.625rem;
+        --h2--font-size: 2.75rem;
+        --h4--font-size: 1.125rem;
+    }
+}
+
+/* Mobile Landscape */
+@media screen and (max-width: 767px) {
+    :root {
+        --padding--global: 2.5rem;
+        --h1--font-size: 2.625rem;
+        --h2--font-size: 2.25rem;
+        --h5--font-size: 1rem;
+    }
+}
+
+/* Mobile Portrait */
+@media screen and (max-width: 479px) {
+    :root {
+        --padding--global: 1.75rem;
+    }
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Avenir Next';
+    src: url(https://cdn.vierless.de/files/fonts/avenir-next/WOFF2/AvenirNext-Regular.woff2);
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Avenir Next';
+    src: url(https://cdn.vierless.de/files/fonts/avenir-next/WOFF2/AvenirNext-Medium.woff2);
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Avenir Next';
+    src: url(https://cdn.vierless.de/files/fonts/avenir-next/WOFF2/AvenirNext-DemiBold.woff2);
+    font-weight: 700;
+}
+
+/* Globals */
+body {
+    font-family: 'Avenir Next', sans-serif;
+    color: var(--text-color--secondary);
+    background: var(--neutral-color--1000);
+}
+body, h1, h2, h3, h4, h5, h6, a, p, ul, ol {margin: 0; padding: 0;}
+a {color: inherit;}
+h1, h2, h3, h4, h5, h6 {color: var(--heading-color--main); font-weight: 600; letter-spacing: -.035em;}
+h1, .h1 {font-size: var(--h1--font-size); line-height: 1.2em;}
+h2, .h2 {font-size: var(--h2--font-size); line-height: 1.2em;}
+h3, .h3 {font-size: var(--h3--font-size); line-height: 1.2em;}
+h4, .h4 {font-size: var(--h4--font-size); line-height: 1.3em;}
+h5, .h5 {font-size: var(--h5--font-size); line-height: 1.4em;}
+h6, .h6 {font-size: var(--h6--font-size); line-height: 1.4em; text-transform: uppercase;}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 1.25rem 1.75rem 1.1875rem 1.75rem;
+    border: 1px solid var(--brand-color--green-1);
+    border-radius: 4px;
+    background-color: var(--brand-color--green-1);
+    color: var(--neutral-color--1000);
+    font-size: .875rem;
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.4em;
+    transition: color .1s ease-in-out, border-color .1s ease-in-out, background-color .1s ease-in-out;
+}
+.btn:hover {
+    background-color: var(--brand-color--green-2);
+    border-color: var(--brand-color--green-2);
+}
+.btn.is-medium {
+    padding: .75rem 1.125rem;
+    font-size: .8125rem;
+}
+.btn.is-small {
+    padding: .5rem .75rem;
+    font-size: .6875rem;
+}
+.btn.secondary {
+    color: var(--text-color--primary);
+    background: var(--white-color--10);
+    border-color: transparent;
+}
+.btn.secondary:hover {
+    background: var(--white-color--15);
+}
+.btn.tertiary {
+    color: var(--text-color--primary);
+    background: none;
+    border-color: var(--white-color--10);
+}
+.btn.tertiary:hover {
+    background: var(--white-color--5);
+    border-color: var(--white-color--15);
+}
+.btn.link {
+    color: var(--text-color--primary);
+    background: none;
+    border-color: transparent;
+    padding: 0;
+}
+.btn.link:hover {
+    text-decoration: underline;
+}
+
+/* Padding */
+.padding-global {padding: 0 var(--padding--global);}
+.padding-section-huge {padding: 12rem 0;}
+.padding-global.padding-section-huge {padding: 12rem var(--padding--global);}
+.padding-section-large {padding: 8rem 0;}
+.padding-global.padding-section-large {padding: 8rem var(--padding--global);}
+.padding-section-medium {padding: 5rem 0;}
+.padding-global.padding-section-medium {padding: 5rem var(--padding--global);}
+.padding-section-small {padding: 3rem 0;}
+.padding-global.padding-section-small {padding: 3rem var(--padding--global);}
+.padding-section-tiny {padding: 1.5rem 0;}
+.padding-global.padding-section-tiny {padding: 1.5rem var(--padding--global);}
+.padding-section-mini {padding: 1rem 0;}
+.padding-global.padding-section-mini {padding: 1rem var(--padding--global);}
+
+/* Container */
+.container-large, .container-medium, .container-small {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+}
+.container-large {max-width: var(--container--large);}
+.container-medium {max-width: var(--container--medium);}
+.container-small {max-width: var(--container--small);}
+
+/* Content */
+.content-wrapper {
+	width: 100%;
+}
+.content-group {
+    margin-bottom: 2rem;
+}
+
+/*############ Components ###########*/
+/* Header */
+.header_component .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header_component .header_logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+.header_component .header_logo {
+    max-width: 8rem;
+    width: 100%;
+    height: auto;
+}
+.header_component .header_logo-link {
+    display: flex;
+}
+.header_component .padding-global {
+    border-bottom: 1px solid var(--white-color--10);
+}
+.header_component .header_tagline {
+    margin-left: .5rem;
+    padding: .75rem 0 .5rem .5rem;
+    border-left: 1px solid var(--white-color--10);
+    color: var(--text-color--secondary);
+}
+.header_component .header_nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1.5rem;
+}
+.header_component .header_nav-list-item {
+    font-size: var(--body--font-size);
+    line-height: 1.4;
+}
+.header_component .header_nav-list-item-link {
+    text-decoration: none;
+    transition: color 100ms ease-in;
+}
+.header_component .header_nav-list-item-link:hover {
+    color: var(--text-color--primary);
+}
+
+/* Footer */
+.footer_component {
+    font-size: .875rem;
+    color: var(--text-color--secondary);
+}
+.footer_component .content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.footer_component .footer_nav-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.footer_component .footer_nav-list-item a {
+    text-decoration: none;
+}
+.footer_component .footer_nav-list-item a:hover {
+    text-decoration: underline;
+}
+@media screen and (max-width: 767px) {
+    .footer_component .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*############ Breakpoints ###########*/
+/* Tablet */
+@media screen and (max-width: 991px) {}
+
+/* Mobile Landscape */
+@media screen and (max-width: 767px) {}
+
+/* Mobile Portrait */
+@media screen and (max-width: 479px) {}

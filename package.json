@@ -1,0 +1,23 @@
+{
+    "name": "waitless-js",
+    "version": "1.0.0",
+    "description": "Lazy load scripts until the first user interaction",
+    "main": "waitless.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vierless/waitless.git"
+    },
+    "keywords": [
+        "lazyloading",
+        "delay-queue",
+        "lazy-load",
+        "pagespeed",
+        "pagespeed-optimization"
+    ],
+    "author": "VIERLESS GmbH",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vierless/waitless/issues"
+    },
+    "homepage": "https://github.com/vierless/waitless/blob/main/README.md"
+}

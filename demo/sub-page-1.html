@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="../waitless.min.js" type="text/javascript"></script>
+    <script src="scripts/global.js" type="text/javascript"></script>
+    <script src="scripts/page-1.js" type="text/javascript"></script>
+    <title>Sub Page 1</title>
+</head>
+<body>
+	<div class="page-wrapper">
+        <!-- Header Component -->
+		<header class="header_component">
+            <div class="padding-global padding-section-mini">
+                <div class="container-large">
+                    <div class="content-wrapper">
+                        <div class="header_logo-wrapper">
+                            <a href="index.html" class="header_logo-link" title="Home Page">
+                                <img class="header_logo" src="assets/vierless-logo.svg" alt="VIERLESS Logo" height="128" width="35" />
+                            </a>
+                            <div class="header_tagline">Developer</div>
+                        </div>
+                        <nav class="header_nav">
+                            <ul class="header_nav-list">
+                                <li class="header_nav-list-item">
+                                    <a href="sub-page-1.html" class="header_nav-list-item-link">
+                                        Sub Page 1
+                                    </a>
+                                </li>
+                                <li class="header_nav-list-item">
+                                    <a href="sub-page-2.html" class="header_nav-list-item-link">
+                                        Sub Page 2
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+		</header>
+        <!-- End Header Component -->
+		<main role="main">
+			<section>
+				<div class="padding-global padding-section-large">
+					<div class="container-medium">
+						<div class="content-wrapper">
+                            <h1>Sub Page 1</h1>
+
+                            <!-- Slider main container -->
+                            <div class="swiper">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    <div class="swiper-slide">Slide 1</div>
+                                    <div class="swiper-slide">Slide 2</div>
+                                    <div class="swiper-slide">Slide 3</div>
+                                    <div class="swiper-slide">Slide 4</div>
+                                    <div class="swiper-slide">Slide 5</div>
+                                    <div class="swiper-slide">Slide 6</div>
+                                </div>
+                            </div>
+
+                            <style>
+                                .swiper {
+                                    width: 100%;
+                                    overflow: hidden;
+                                }
+                                .swiper-wrapper {
+                                    width: 100%;
+                                    display: flex;
+                                }
+                                .swiper-slide {
+                                    flex-shrink: 0;
+                                    padding: 1rem 1.5rem;
+                                    border-radius: 1rem;
+                                    background: rgba(255,255,255,.2);
+                                    width: calc(100%/3);
+                                    height: 100px;
+                                    box-sizing: border-box;
+                                }
+                            </style>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+        <!-- Footer Component -->
+		<footer class="footer_component">
+            <div class="padding-global padding-section-tiny">
+                <div class="container-large">
+                    <div class="content-wrapper">
+                        <div class="footer_copyright">©2024 VIERLESS GmbH</div>
+                        <nav class="footer_nav">
+                            <ul class="footer_nav-list">
+                                <li class="footer_nav-list-item"><a href="https://vierless.de/impressum/" title="Impressum" target="_blank">Impressum</a></li>
+                                <li class="footer_nav-list-item"><a href="https://vierless.de/datenschutz/" title="Datenschutz" target="_blank">Datenschutz</a></li>
+                                <li class="footer_nav-list-item"><a href="https://vierless.de/agb/" title="AGB" target="_blank">AGB</a></li>
+                                <li class="footer_nav-list-item"><a href="https://vierless.de/cookies/" title="Cookies" target="_blank">Cookies</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+		</footer>
+        <!-- End Footer Component -->
+	</div>
+</body>
+</html>
