@@ -3,12 +3,12 @@ const waitless = {
     scripts: [],
     functions: []
 };
+let fallbackDelay = 10000;
+let interactionDetected = false;
 function loadScripts(scriptConfigs, globalCallback) {
     removeEventListeners();
-
     let loadedScripts = 0;
     const totalScripts = scriptConfigs.length;
-
     function scriptLoaded(callback) {
         loadedScripts++;
         if (loadedScripts === totalScripts && typeof globalCallback === 'function') {
@@ -18,7 +18,6 @@ function loadScripts(scriptConfigs, globalCallback) {
             callback();
         }
     }
-
     function scriptError(src, callback) {
         const error = new Error(`Failed to load script: ${src}`);
         loadedScripts++;
@@ -29,7 +28,6 @@ function loadScripts(scriptConfigs, globalCallback) {
             globalCallback(error);
         }
     }
-
     scriptConfigs.forEach(function(config) {
         const { src, location = 'body', callback } = config;
         const script = document.createElement('script');
@@ -56,9 +54,17 @@ function loadScripts(scriptConfigs, globalCallback) {
         }
     });
 }
-
+const scriptLoadTimeout = setTimeout(() => {
+    if (!interactionDetected) {
+        loadScripts(waitless.scripts, allScriptsReady);
+    }
+}, fallbackDelay);
 function loadScriptsOnFirstInteraction() {
-    loadScripts(waitless.scripts, allScriptsReady);
+    if (!interactionDetected) {
+        loadScripts(waitless.scripts, allScriptsReady);
+    }
+    interactionDetected = true;
+    clearTimeout(scriptLoadTimeout);
 }
 function allScriptsReady() {
     console.log('All scripts are done loading');
@@ -80,5 +86,4 @@ function removeEventListeners() {
 document.addEventListener('scroll', loadScriptsOnFirstInteraction);
 document.addEventListener('touchstart', loadScriptsOnFirstInteraction);
 document.addEventListener('mousemove', loadScriptsOnFirstInteraction);
-
 console.log('waitless.js');
