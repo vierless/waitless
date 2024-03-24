@@ -3,6 +3,7 @@ const waitless = {
     scripts: [],
     functions: []
 };
+const interactionList = ['keydown', 'mousemove', 'wheel', 'touchmove', 'touchstart', 'touchend'];
 let fallbackDelay = 10000;
 let interactionDetected = false;
 function loadScripts(scriptConfigs, globalCallback) {
@@ -53,6 +54,12 @@ function loadScripts(scriptConfigs, globalCallback) {
             document.body.appendChild(script);
         }
     });
+    const waitlessScripts = document.querySelectorAll('script[waitless]');
+    waitlessScripts.forEach(script => {
+        const src = script.getAttribute('waitless');
+        script.src = src;
+        script.removeAttribute('waitless');
+    });
 }
 const scriptLoadTimeout = setTimeout(() => {
     if (!interactionDetected) {
@@ -78,12 +85,12 @@ function isLibraryAvailable(libraryName) {
     return typeof window[libraryName] !== 'undefined';
 }
 function removeEventListeners() {
-    document.removeEventListener('scroll', loadScriptsOnFirstInteraction);
-    document.removeEventListener('touchstart', loadScriptsOnFirstInteraction);
-    document.removeEventListener('mousemove', loadScriptsOnFirstInteraction);
+    interactionList.forEach(event => {
+        document.removeEventListener(event, loadScriptsOnFirstInteraction);
+    });    
 }
 // Event listeners to trigger script loading
-document.addEventListener('scroll', loadScriptsOnFirstInteraction);
-document.addEventListener('touchstart', loadScriptsOnFirstInteraction);
-document.addEventListener('mousemove', loadScriptsOnFirstInteraction);
-console.log('waitless.js');
+interactionList.forEach(event => {
+    document.addEventListener(event, loadScriptsOnFirstInteraction);
+});
+console.log('waitless 1.0.1');
