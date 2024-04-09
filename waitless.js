@@ -2,7 +2,8 @@
     // Load scripts
     const waitless = {
         scripts: [],
-        functions: []
+        functions: [],
+        isLibraryAvailable: isLibraryAvailable,
     };
     const interactionList = ['keydown', 'mousemove', 'wheel', 'touchmove', 'touchstart', 'touchend'];
     let fallbackDelay = 10000;
@@ -56,7 +57,7 @@
             }
         });
         const waitlessScripts = document.querySelectorAll('script[waitless]');
-        const urlRegex = /^(?:https?:\/\/)?(?:www\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9]+(?:\/(?:[^\/.]+\/)*[^\/.]+\.[a-zA-Z0-9]+)?\/?$/;
+        const urlRegex = /^(?:https?:\/\/)?(?:[a-zA-Z0-9-]+\.)?[a-zA-Z0-9-]+\.[a-zA-Z0-9]+(?:\/(?:[^\/.]+\/)*[^\/.]+\.[a-zA-Z0-9]+)?\/?$/;
         waitlessScripts.forEach(script => {
             const waitlessUrl = script.getAttribute('waitless');
             if (urlRegex.test(waitlessUrl)) {
