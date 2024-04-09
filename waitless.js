@@ -146,5 +146,5 @@
     });
 
     global.waitless = waitless;
-    console.log('waitless 1.0.5');
+    console.log('waitless 1.0.6');
 })(this);
