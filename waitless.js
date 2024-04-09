@@ -36,10 +36,11 @@
                 iframeObserver.observe(container);
             });
             waitless.triggerLoad = function() {
+                var iframeContainers = document.querySelectorAll('iframe[waitless]');
                 iframeContainers.forEach(function(container) {
                     loadIframe(container);
                 });
-            };
+            };            
         }
     }
 
@@ -139,7 +140,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         loadIframes();
     });
-    // Event listeners to trigger script loading
+    // Load scripts
     interactionList.forEach(event => {
         document.addEventListener(event, loadScriptsOnFirstInteraction);
     });
