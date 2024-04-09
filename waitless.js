@@ -100,7 +100,7 @@
     interactionList.forEach(event => {
         document.addEventListener(event, loadScriptsOnFirstInteraction);
     });
-    console.log('waitless 1.0.2');
+    console.log('waitless 1.0.3');
 
     global.waitless = waitless;
 })(this);
