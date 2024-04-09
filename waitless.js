@@ -1,10 +1,49 @@
 (function(global) {
-    // Load scripts
+    
     const waitless = {
         scripts: [],
         functions: [],
-        isLibraryAvailable: isLibraryAvailable,
+        isLibraryAvailable: isLibraryAvailable
     };
+
+    // Lazy load iframes
+    function loadIframes() {
+        var iframeContainers = document.querySelectorAll('iframe[waitless]');
+        if (iframeContainers.length > 0) {
+            var observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0 // 100% = 1.0
+            };
+            var loadIframe = function(iframeEl) {
+                var iframeSrc = iframeEl.getAttribute('waitless');
+                try {
+                    iframeEl.setAttribute('src', iframeSrc);
+                    iframeEl.removeAttribute('waitless');
+                } catch (error) {
+                    return;
+                }
+            };
+            var iframeObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        loadIframe(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            iframeContainers.forEach(function(container) {
+                iframeObserver.observe(container);
+            });
+            waitless.triggerLoad = function() {
+                iframeContainers.forEach(function(container) {
+                    loadIframe(container);
+                });
+            };
+        }
+    }
+
+    // Lazy load scripts
     const interactionList = ['keydown', 'mousemove', 'wheel', 'touchmove', 'touchstart', 'touchend'];
     let fallbackDelay = 10000;
     let interactionDetected = false;
@@ -81,7 +120,6 @@
         clearTimeout(scriptLoadTimeout);
     }
     function allScriptsReady() {
-        console.log('All scripts are done loading');
         waitless.functions.forEach(func => {
             if (typeof func === 'function') {
                 func();
@@ -100,7 +138,7 @@
     interactionList.forEach(event => {
         document.addEventListener(event, loadScriptsOnFirstInteraction);
     });
-    console.log('waitless 1.0.3');
 
     global.waitless = waitless;
+    console.log('waitless 1.0.4');
 })(this);
