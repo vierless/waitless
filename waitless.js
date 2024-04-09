@@ -134,11 +134,16 @@
             document.removeEventListener(event, loadScriptsOnFirstInteraction);
         });    
     }
+
+    // Load iframes
+    document.addEventListener('DOMContentLoaded', function() {
+        loadIframes();
+    });
     // Event listeners to trigger script loading
     interactionList.forEach(event => {
         document.addEventListener(event, loadScriptsOnFirstInteraction);
     });
 
     global.waitless = waitless;
-    console.log('waitless 1.0.4');
+    console.log('waitless 1.0.5');
 })(this);
